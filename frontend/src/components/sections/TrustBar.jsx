@@ -8,6 +8,7 @@ const ITEMS = [
 export default function TrustBar() {
   return (
     <section
+      id="segunda-seccion"
       className="py-12 px-6 md:px-20 border-y"
       style={{
         backgroundColor: 'var(--color-surface-container-high)',

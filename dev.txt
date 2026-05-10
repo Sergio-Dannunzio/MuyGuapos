@@ -3,7 +3,7 @@
 ## Descripción del Proyecto
 
 **MuyGuapos** es un e-commerce argentino de ropa elegante masculina.
-Slogan: a definir.
+Slogan: *Cada detalle cuenta. Cada prenda también.*
 Mercado objetivo: hombres que valoran el estilo clásico, la sastrería y la distinción. Cliente que busca calidad, exclusividad y una experiencia de compra premium.
 
 ## Stack Tecnológico
@@ -82,4 +82,5 @@ Seguí este orden al inicio de **cada sesión**:
 
 ## Historial de Sesiones y Cambios
 
+2026/05/10 - Slogan definido: "Cada detalle cuenta. Cada prenda también."
 2026/05/09 - Inicio del proyecto MuyGuapos. Se adaptó dev.txt desde el proyecto anterior (DobleT — indumentaria técnica) al nuevo proyecto: e-commerce de ropa elegante masculina. Stack mantenido: React + Tailwind + Laravel + MySQL. Sistema de diseño: Obsidian & Gold (ya definido en DESIGN.md).

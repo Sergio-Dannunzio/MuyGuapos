@@ -1,7 +1,17 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import heroBg from '../../assets/brand/interior.jpg'
 
 export default function Hero() {
+  const [lookbookHover, setLookbookHover] = useState(false)
+
+  function scrollToNext() {
+    const el = document.getElementById('segunda-seccion')
+    if (!el) return
+    const top = el.getBoundingClientRect().top + window.scrollY + 100
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+
   return (
     <section
       className="relative w-full flex items-center justify-center overflow-hidden"
@@ -48,7 +58,7 @@ export default function Hero() {
             margin: 0,
           }}
         >
-          Viste con Carácter
+          Vestite a tu altura.
         </h1>
 
         <p
@@ -62,7 +72,7 @@ export default function Hero() {
             margin: 0,
           }}
         >
-          Sastrería moderna para el hombre que sabe lo que quiere
+          Cada detalle cuenta. Cada prenda también.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
@@ -84,25 +94,28 @@ export default function Hero() {
           >
             Ver Colección
           </Link>
-          <Link
-            to="/lookbook"
+          <button
+            onClick={scrollToNext}
+            onMouseEnter={() => setLookbookHover(true)}
+            onMouseLeave={() => setLookbookHover(false)}
             style={{
               display: 'block',
               border: '1px solid #e5e2e1',
-              color: '#e5e2e1',
+              color: lookbookHover ? '#131313' : '#e5e2e1',
               fontFamily: 'var(--font-hanken)',
               fontSize: '14px',
               fontWeight: '600',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              textDecoration: 'none',
               padding: '16px 32px',
               textAlign: 'center',
-              backgroundColor: 'transparent',
+              backgroundColor: lookbookHover ? '#e5e2e1' : 'transparent',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s ease, color 0.3s ease',
             }}
           >
             Lookbook
-          </Link>
+          </button>
         </div>
       </div>
 

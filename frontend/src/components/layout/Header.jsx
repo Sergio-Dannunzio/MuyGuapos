@@ -170,20 +170,21 @@ export default function Header({ cartCount = 0 }) {
         {/* Iconos — derecha */}
         <div className="flex items-center gap-4 flex-1 justify-end">
           <button
-            style={{ color: '#e5e2e1', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: '#e5e2e1', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             aria-label="Buscar"
           >
             <span className="material-symbols-outlined">search</span>
           </button>
           <button
-            style={{ color: '#e5e2e1', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: '#e5e2e1', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             aria-label="Mi cuenta"
           >
             <span className="material-symbols-outlined">person</span>
           </button>
-          <button
+          <Link
+            to="/carrito"
             className="relative"
-            style={{ color: 'var(--color-secondary)', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: 'var(--color-secondary)', display: 'flex', alignItems: 'center' }}
             aria-label="Carrito"
           >
             <span className="material-symbols-outlined">shopping_bag</span>
@@ -201,7 +202,7 @@ export default function Header({ cartCount = 0 }) {
                 {cartCount}
               </span>
             )}
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -216,7 +217,7 @@ export default function Header({ cartCount = 0 }) {
           }}
         >
           {NAV_ITEMS.map(({ label, groups }) => (
-            <div key={label} style={{ borderBottom: '1px solid var(--color-outline-variant)' }}>
+            <div key={label} style={{ borderBottom: '1px solid #1c2165' }}>
               <button
                 className="w-full flex items-center justify-between px-6 py-4"
                 style={{
@@ -224,7 +225,7 @@ export default function Header({ cartCount = 0 }) {
                   fontSize: '12px',
                   fontWeight: '600',
                   letterSpacing: '0.15em',
-                  color: 'var(--color-on-surface)',
+                  color: '#e5e2e1',
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
@@ -234,14 +235,14 @@ export default function Header({ cartCount = 0 }) {
                 {label}
                 <span
                   className="material-symbols-outlined"
-                  style={{ fontSize: '20px', transition: 'transform 0.15s', transform: mobileExpanded === label ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  style={{ fontSize: '20px', color: '#e5e2e1', transition: 'transform 0.15s', transform: mobileExpanded === label ? 'rotate(180deg)' : 'rotate(0deg)' }}
                 >
                   keyboard_arrow_down
                 </span>
               </button>
 
               {mobileExpanded === label && (
-                <div style={{ backgroundColor: 'var(--color-surface-container)', paddingBottom: '8px' }}>
+                <div style={{ backgroundColor: '#080b38', paddingBottom: '8px' }}>
                   {groups.map(group => (
                     <div key={group.title}>
                       <span
@@ -251,7 +252,7 @@ export default function Header({ cartCount = 0 }) {
                           fontSize: '11px',
                           fontWeight: '600',
                           letterSpacing: '0.12em',
-                          color: 'var(--color-secondary)',
+                          color: '#e9c349',
                         }}
                       >
                         {group.title}
@@ -265,7 +266,7 @@ export default function Header({ cartCount = 0 }) {
                           style={{
                             fontFamily: 'var(--font-hanken)',
                             fontSize: '15px',
-                            color: 'var(--color-on-surface-variant)',
+                            color: '#a8acd4',
                             textDecoration: 'none',
                           }}
                         >
@@ -288,13 +289,13 @@ export default function Header({ cartCount = 0 }) {
               fontSize: '12px',
               fontWeight: '600',
               letterSpacing: '0.15em',
-              color: 'var(--color-on-surface)',
+              color: '#e5e2e1',
               textDecoration: 'none',
-              borderBottom: '1px solid var(--color-outline-variant)',
+              borderBottom: '1px solid #1c2165',
             }}
           >
             LOOKBOOK
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#e5e2e1' }}>chevron_right</span>
           </Link>
         </div>
       )}
@@ -307,7 +308,7 @@ function DropdownPanel({ item, onClose, onMouseEnter, onMouseLeave }) {
     <div
       className="absolute top-full left-0 border-t border-b"
       style={{
-        backgroundColor: 'var(--color-surface-container-low)',
+        backgroundColor: '#101453',
         borderTopColor: 'var(--color-secondary)',
         borderBottomColor: 'var(--color-outline-variant)',
         minWidth: '320px',
@@ -342,13 +343,13 @@ function DropdownPanel({ item, onClose, onMouseEnter, onMouseLeave }) {
                     style={{
                       fontFamily: 'var(--font-hanken)',
                       fontSize: '15px',
-                      color: 'var(--color-on-surface-variant)',
+                      color: '#a8acd4',
                       textDecoration: 'none',
                       whiteSpace: 'nowrap',
                       transition: 'color 0.2s',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-on-surface)' }}
-                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-on-surface-variant)' }}
+                    onMouseEnter={e => { e.currentTarget.style.color = '#e5e2e1' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '#a8acd4' }}
                   >
                     {label}
                   </Link>

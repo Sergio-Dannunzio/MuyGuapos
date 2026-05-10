@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom'
 import imgSacoChaleco from '../../assets/products/saco-chaleco/saco-chaleco.jpg'
 
 export default function EditorialBanner() {
   return (
-    <section className="px-6 md:px-20 py-24 mx-auto" style={{ maxWidth: 'var(--spacing-container-max)' }}>
+    <section className="py-24">
       <div
         className="relative w-full flex items-center overflow-hidden"
         style={{
-          height: '560px',
+          height: '680px',
           backgroundColor: 'var(--color-surface-container)',
           border: '1px solid var(--color-outline-variant)',
         }}
@@ -46,7 +47,7 @@ export default function EditorialBanner() {
           </span>
           <h2
             style={{
-              fontFamily: 'var(--font-playfair)',
+              fontFamily: 'var(--font-barlow)',
               fontSize: 'clamp(28px, 4vw, 40px)',
               fontWeight: '500',
               lineHeight: '1.2',
@@ -54,14 +55,14 @@ export default function EditorialBanner() {
               margin: '0 0 32px 0',
             }}
           >
-            Para cada ocasión importante, existe el traje perfecto.
+            Ocasiones Especiales.
           </h2>
-          <button
+          <Link
+            to="/producto/camisa"
+            className="btn-slide-gold"
             style={{
               display: 'inline-block',
               width: 'fit-content',
-              backgroundColor: 'var(--color-secondary)',
-              color: 'var(--color-on-secondary)',
               fontFamily: 'var(--font-hanken)',
               fontSize: '14px',
               fontWeight: '600',
@@ -70,10 +71,11 @@ export default function EditorialBanner() {
               padding: '16px 32px',
               border: 'none',
               cursor: 'pointer',
+              textDecoration: 'none',
             }}
           >
             Arma tu look
-          </button>
+          </Link>
         </div>
       </div>
     </section>
