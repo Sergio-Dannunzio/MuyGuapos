@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELITE TAILOR - Sastrería de Lujo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#474646",
+                      "surface-dim": "#131313",
+                      "tertiary-container": "#090b02",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary": "#3c2f00",
+                      "on-tertiary-fixed": "#1b1d0e",
+                      "secondary-container": "#af8d11",
+                      "surface-container-highest": "#353535",
+                      "tertiary-fixed": "#e4e4cc",
+                      "on-error": "#690005",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#7b7979",
+                      "on-secondary-container": "#342800",
+                      "background": "#131313",
+                      "secondary-fixed": "#ffe088",
+                      "outline": "#8e9192",
+                      "inverse-on-surface": "#313030",
+                      "secondary": "#e9c349",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-tertiary": "#303221",
+                      "on-primary-fixed": "#1c1b1b",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#c9c6c5",
+                      "on-surface": "#e5e2e1",
+                      "surface": "#131313",
+                      "surface-container": "#20201f",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-secondary-fixed": "#241a00",
+                      "outline-variant": "#444748",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e5e2e1",
+                      "primary": "#c9c6c5",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-bright": "#393939",
+                      "on-primary": "#313030",
+                      "tertiary": "#c8c8b0",
+                      "tertiary-fixed-dim": "#c8c8b0",
+                      "on-tertiary-container": "#7a7b66",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-variant": "#353535",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#474836",
+                      "primary-container": "#0a0a0a",
+                      "inverse-primary": "#5f5e5e",
+                      "on-surface-variant": "#c4c7c7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "80px",
+                      "container-max": "1440px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "button": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "button": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #0A0A0A; /* Level 0 Base from Style Guidance */
+            color: #e5e2e1;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+      </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary selection:text-on-secondary">
+<!-- Section 1: Announcement Bar -->
+<div class="bg-secondary text-on-secondary py-2 text-center w-full z-50">
+<p class="font-label-caps text-label-caps uppercase tracking-widest">Envío gratis en compras mayores a $150 USD</p>
+</div>
+<!-- Section 2: Navbar (TopAppBar) -->
+<nav class="sticky top-0 z-40 bg-background dark:bg-surface-dim border-b border-secondary/20 flex flex-col w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="max-w-container-max mx-auto w-full flex justify-between items-center">
+<!-- Mobile Menu Icon (Placeholder for functionality) -->
+<button class="md:hidden text-on-surface hover:text-secondary transition-all">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Navigation Links (Desktop) -->
+<ul class="hidden md:flex gap-8 items-center flex-1">
+<li><a class="text-on-surface hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps" href="#">Sacos</a></li>
+<li><a class="text-on-surface hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps" href="#">Camisas</a></li>
+<li><a class="text-on-surface hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps" href="#">Corbatas</a></li>
+<li><a class="text-on-surface hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps" href="#">Trajes</a></li>
+<li><a class="text-on-surface hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps" href="#">Occasions</a></li>
+</ul>
+<!-- Logo -->
+<div class="flex-shrink-0 flex justify-center flex-1 md:flex-none">
+<a class="text-headline-lg font-headline-lg text-secondary dark:text-secondary tracking-widest uppercase" href="#">ELITE TAILOR</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex gap-4 items-center flex-1 justify-end">
+<button class="text-secondary dark:text-secondary hover:text-secondary-container transition-all">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-secondary dark:text-secondary hover:text-secondary-container transition-all">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="text-secondary dark:text-secondary hover:text-secondary-container transition-all">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Section 3: Hero -->
+<header class="relative w-full h-[819px] min-h-[600px] flex items-center justify-center bg-surface-container-lowest">
+<div class="absolute inset-0 z-0">
+<img alt="A high-contrast, editorial style photograph of a modern gentleman wearing a meticulously tailored bespoke suit. The setting is a dimly lit, luxurious atelier with moody, dramatic noir lighting highlighting the exquisite texture of the dark fabric and sharp silhouette. Deep shadows contrast with subtle gold accents in the background, embodying a sophisticated, authoritative elegance suited for a premium tailoring brand." class="w-full h-full object-cover object-top opacity-60" data-alt="A high-contrast, editorial style photograph of a modern gentleman wearing a meticulously tailored bespoke suit. The setting is a dimly lit, luxurious atelier with moody, dramatic noir lighting highlighting the exquisite texture of the dark fabric and sharp silhouette. Deep shadows contrast with subtle gold accents in the background, embodying a sophisticated, authoritative elegance suited for a premium tailoring brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY6V9wlK8HrzVtwNXdOcm9BU9dHncVS2d0xjVgtwrPXbn4FHpZKs9ENLn49e1jxZV2bBnstHG2BgNyvaopvQ-9h0QijsmUhk9RyNRqQ2J1sLElMHGo1AQqge_PUPAp-Ubprmog3OjaVsvlsn0x_35tqFhHf0dXlWRPAODoWCnhNpitThj8qMGugBPt9k68bVNkA2QByVOTP7b_TLz0NtafzQwFsLCE6eWDNjck0AELTMpBNUsXme4AydCLfm8jsCAUWXDiV2dPVQjt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile max-w-4xl mx-auto flex flex-col items-center gap-8">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Viste con Carácter</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Sastrería moderna para el hombre que sabe lo que quiere</p>
+<div class="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
+<button class="bg-secondary text-on-secondary px-8 py-4 font-button text-button uppercase hover:bg-secondary-container transition-colors w-full sm:w-auto text-center">Ver Colección</button>
+<button class="border border-on-surface text-on-surface px-8 py-4 font-button text-button uppercase hover:bg-on-surface hover:text-background transition-colors w-full sm:w-auto text-center">Nuestra Historia</button>
+</div>
+</div>
+</header>
+<!-- Section 4: Trust Bar -->
+<section class="bg-surface-container-high py-12 px-margin-mobile md:px-margin-desktop border-y border-outline-variant/10">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center gap-4">
+<span class="material-symbols-outlined text-secondary text-4xl">local_shipping</span>
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Envío a todo el país</p>
+</div>
+<div class="flex flex-col items-center text-center gap-4">
+<span class="material-symbols-outlined text-secondary text-4xl">assignment_return</span>
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Devoluciones en 30 días</p>
+</div>
+<div class="flex flex-col items-center text-center gap-4">
+<span class="material-symbols-outlined text-secondary text-4xl">lock</span>
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Pago seguro</p>
+</div>
+<div class="flex flex-col items-center text-center gap-4">
+<span class="material-symbols-outlined text-secondary text-4xl">support_agent</span>
+<p class="font-label-caps text-label-caps uppercase text-on-surface">Atención personalizada</p>
+</div>
+</div>
+</section>
+<!-- Section 5: Categories (Bento Grid Style) -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-unit h-auto md:h-[600px]">
+<!-- Large Card -->
+<a class="relative group overflow-hidden md:col-span-2 md:row-span-2 h-[400px] md:h-full block border border-outline-variant/10" href="#">
+<img alt="Close up editorial shot of a luxurious tailored men's suit jacket. The image features a dark, charcoal grey textured fabric with sharp lapels, styled against a deep, moody black background. Fine gold accents highlight the sophisticated craftsmanship and sleek, high-contrast aesthetic typical of an elite tailoring house." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="Close up editorial shot of a luxurious tailored men's suit jacket. The image features a dark, charcoal grey textured fabric with sharp lapels, styled against a deep, moody black background. Fine gold accents highlight the sophisticated craftsmanship and sleek, high-contrast aesthetic typical of an elite tailoring house." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYXYYYTSdXq3kG-hQDyxWurGY_fPYnSleTX8FSlz3pfq5Zt87DA1_m0ujfmQhQYiKqpwODK8QJQCP4n4jyHpUYYGnbrRHsSm7XWl2vNzs4cw2mHO90zUuivbjYw8K3y6LH6jEi3TVf2kKIwZHOKesJDcHThuMLB4qb5XIjfpBpNL-arPfNOKtnHd7-GQOx4OxS0_OmD4or8RWdzHPQMzRza5zYcLeIT6H5dPTlh6s9pNsusiZjYy5RXftRDqq6bclI23G816kkqhu"/>
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Trajes</h3>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest flex items-center gap-2">Explorar <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</a>
+<!-- Small Card 1 -->
+<a class="relative group overflow-hidden h-[300px] md:h-full block border border-outline-variant/10" href="#">
+<img alt="Detailed view of neatly folded premium men's dress shirts. Crisp white and dark cotton fabrics are arranged meticulously in a dimly lit, high-end atelier setting. The lighting is soft yet directional, creating sharp shadows and emphasizing the luxurious quality and minimalist aesthetic of the tailored garments." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="Detailed view of neatly folded premium men's dress shirts. Crisp white and dark cotton fabrics are arranged meticulously in a dimly lit, high-end atelier setting. The lighting is soft yet directional, creating sharp shadows and emphasizing the luxurious quality and minimalist aesthetic of the tailored garments." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYPBGA9utPhwfpNe5sNXkghA88ycf26WwN4T44Zj73YroISb4ZS59ti0l1sJn7UOeAMcc_Ms3fYB9A4e6omk3vUr8fgOlC8BXpZ_acXz05MW5AHPdxeLOlNPCljFkey2XAGKJ9fT67IxTLSq3_WxBJnYmU9pY0dWmZmH_na4A3gZlMZzmBN9UnbmM_XfraC4XoFEK7HGGm0_mV5B2JR6gxYMykwqzuiQShMHcHS7wK1ae-O7Qgqx7_Ih652jqqUaTnpVWuY4BwpHxm"/>
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Camisas</h3>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest flex items-center gap-2">Explorar <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</a>
+<!-- Small Card 2 -->
+<div class="grid grid-cols-2 gap-unit h-[300px] md:h-full col-span-1">
+<a class="relative group overflow-hidden block border border-outline-variant/10" href="#">
+<img alt="A sharply dressed mannequin torso displaying an elegant dark blazer over a crisp shirt. The background is pure obsidian black, allowing the intricate details of the jacket's cut and fabric texture to stand out. The scene conveys authoritative restraint and bespoke tailoring mastery through high-contrast minimalist photography." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="A sharply dressed mannequin torso displaying an elegant dark blazer over a crisp shirt. The background is pure obsidian black, allowing the intricate details of the jacket's cut and fabric texture to stand out. The scene conveys authoritative restraint and bespoke tailoring mastery through high-contrast minimalist photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzD1PH2pEJ1qOSgn_8QxPfYSK1VOvmu0GrUDWlG5t4GBtpc9auq5cQWYG5zRDJ3NgC8La58Ms2M8362SKG3RIFCTemCwNpH7GlVAoLY3DGazcCJn8wQ_OPcHxZsNn34kj27mqiubD-jsGrEy2S7_KNyvINkM7GNbsWmj-4aQZo70iRYURkVPfNDUAIejMLeSZrzCRn9cQRxVbSt-PR6tGKrxQfNp-4qA6Yjl6koPo4Zfo5u9GG0ZU9YpdHPi8NhHyIpqfKRWIwfynQ"/>
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sacos</h3>
+</div>
+</a>
+<a class="relative group overflow-hidden block border border-outline-variant/10" href="#">
+<img alt="A close-up, artistic shot of luxurious silk neckties laid out on a dark slate surface. Rich, deep colors like burgundy and midnight blue are accentuated by subtle gold patterns. The lighting is cinematic and dark, emphasizing the opulent texture of the accessories in a high-end fashion editorial context." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="A close-up, artistic shot of luxurious silk neckties laid out on a dark slate surface. Rich, deep colors like burgundy and midnight blue are accentuated by subtle gold patterns. The lighting is cinematic and dark, emphasizing the opulent texture of the accessories in a high-end fashion editorial context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAodk-7Bwgr__CGIaLkVsgLSAXFeGMHmUZZ8pDnnT_3qIOMH7cM4W5HJoK_9wCHU_STBV8IY8HADHT-lekR3L0bpvae2s5SeNAN-0dWpaBkWjOSYux0my3DRb4ypj_Zwc51_H7r71PVcm8eyyELJKxkMmhLYA4LdFsT0S2znoVCvzUmVWtwPnERKabjfsMNm3IiJr9giV3oAK_Ivfc0slnGQ3Z7bdF-iKBZ9RKDRS7rnAAg-pQKEql9Jk63-r4uMEyPnYYi60Mz-aqj"/>
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Corbatas</h3>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Section 7: Editorial Banner -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="relative w-full h-[600px] flex items-center bg-surface-container border border-outline-variant/10 overflow-hidden">
+<div class="absolute inset-0 z-0 md:w-2/3 right-0 ml-auto">
+<img alt="An editorial fashion campaign image showing a distinguished man adjusting the cuffs of his bespoke dark suit. He is standing in a grand, minimalist architectural space with deep shadows and striking beams of light. The atmosphere is quiet, commanding, and saturated with the luxurious, high-contrast aesthetic of an elite brand." class="w-full h-full object-cover opacity-50 md:opacity-80 mask-image-gradient" data-alt="An editorial fashion campaign image showing a distinguished man adjusting the cuffs of his bespoke dark suit. He is standing in a grand, minimalist architectural space with deep shadows and striking beams of light. The atmosphere is quiet, commanding, and saturated with the luxurious, high-contrast aesthetic of an elite brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_VoBBnVT3gsXxAfi_Ss1wgXQebxG3wjYvAnwIBYx8zKik5_8ctJ7oLtsoC0GWOhlOpjM6LdCm7I5f7-AKviuWlfU5R8w-dzzLDbNpQVOyA3lFU7YphiLY6I_i-Hl53Dsy7SeAqxbBY8Ws6aiy4f4zKqYfCnvmQE86e-1Saqgv5X8VUCuvK9ZGPFQEjvzFH1HhgodaPZB8pRzn5fOInnyY50bh5AAG0lm5qBvE3CvEuyx89JHhgmJGX7MRvdS_O6higornf4qD0Zz9"/>
+</div>
+<div class="relative z-10 p-8 md:p-16 max-w-2xl bg-gradient-to-r from-surface-container via-surface-container/90 to-transparent h-full flex flex-col justify-center">
+<h2 class="font-display-lg-mobile md:font-headline-lg text-display-lg-mobile md:text-headline-lg text-on-surface mb-6">Para cada ocasión importante, existe el traje perfecto.</h2>
+<button class="bg-secondary text-on-secondary px-8 py-4 font-button text-button uppercase hover:bg-secondary-container transition-colors w-max">Arma tu look</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant/10 mt-auto">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Brand Column -->
+<div class="flex flex-col gap-6">
+<span class="text-headline-md font-headline-md text-on-surface tracking-tighter uppercase">ELITE TAILOR</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Sastrería de precisión. Autoridad a través de la contención. El arte de vestir bien.</p>
+</div>
+<!-- Links -->
+<div class="flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Customer Care</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Shipping</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Size Guide</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<!-- Legal -->
+<div class="flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+</div>
+<!-- Social & Payment -->
+<div class="flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Follow Us</h4>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/10 py-6 px-margin-mobile md:px-margin-desktop text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant">© 2024 HOUSE OF TAILORING. BESPOKE CRAFTSMANSHIP.</p>
+</div>
+</footer>
+</body></html>

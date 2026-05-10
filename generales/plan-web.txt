@@ -1,0 +1,244 @@
+# Plan de Implementación — MuyGuapos E-commerce
+
+Stack: React (frontend) + Laravel (backend API REST) + MySQL
+Referencia de diseño: `/MuyGuapos/DESIGN.md` y `/MuyGuapos/code.html`
+
+---
+
+## Fase 0 — Setup y Base del Proyecto
+
+### Backend (Laravel)
+- Crear proyecto Laravel: `composer create-project laravel/laravel backend`
+- Configurar `.env`: DB (MySQL), APP_URL, APP_TIMEZONE (America/Argentina/Buenos_Aires), CORS
+- Estructura de rutas versionadas: `/api/v1/...`
+- Instalar dependencias base: `laravel/sanctum` (auth), `spatie/laravel-permission` (roles), `intervention/image` (imágenes)
+- Configurar CORS para permitir requests del frontend React
+- Endpoint de healthcheck: `GET /api/v1/health`
+- Convenciones: snake_case en DB, respuestas con envoltura `{data, meta, error}`
+
+### Frontend (React)
+- Crear proyecto: `npm create vite@latest frontend -- --template react`
+- Instalar dependencias: Tailwind CSS, React Router v6, Axios, Zustand (estado global), React Query
+- Configurar Tailwind con los design tokens del proyecto (colores, tipografías y espaciados de `DESIGN.md`)
+- Fuentes Google: Playfair Display, Hanken Grotesk
+- Estructura de carpetas:
+  ```
+  /src
+    /components     ← Componentes reutilizables (Button, Badge, Card, etc.)
+    /pages          ← Páginas/rutas principales
+    /layouts        ← Layout principal, admin layout
+    /hooks          ← Custom hooks
+    /store          ← Estado global (Zustand)
+    /services       ← Llamadas a la API (Axios)
+    /utils          ← Helpers
+  ```
+
+**Entregables Fase 0:** Ambos proyectos corriendo en local; healthcheck OK; Tailwind con design system Obsidian & Gold configurado.
+
+---
+
+## Fase 1 — Modelo de Datos y Migraciones
+
+### Tablas principales:
+
+- `users` — clientes registrados (nombre, email, password, teléfono, dirección)
+- `roles` — admin, customer (via spatie/permission)
+- `categories` — categorías de productos (nombre, slug, descripción, imagen, categoría padre para subcategorías)
+- `products` — catálogo de productos (nombre, slug, descripción, precio, precio_oferta, stock, categoría, imágenes, activo)
+- `product_images` — imágenes múltiples por producto
+- `product_variants` — variantes por talle/color (talle, color, stock, SKU)
+- `orders` — pedidos (usuario, estado, total, dirección_envío, método_pago)
+- `order_items` — ítems de cada pedido (producto, variante, cantidad, precio_unitario)
+- `cart` — carrito persistente (usuario o sesión anónima)
+- `cart_items` — ítems del carrito
+- `addresses` — direcciones guardadas por usuario
+- `shipping_methods` — métodos de envío (nombre, precio, días estimados)
+- `coupons` — cupones de descuento (código, tipo, valor, usos, vencimiento)
+- `wishlists` — favoritos por usuario (user_id, product_id)
+- `collections` — colecciones editoriales/lookbook (nombre, slug, descripción, imagen_cover, activa)
+- `collection_products` — productos asociados a cada colección
+
+### Seeders iniciales:
+- Categorías base: Trajes, Camisas, Pantalones, Blazers, Accesorios, Calzado
+- Usuario admin
+- Productos de ejemplo con variantes de talle y color
+
+**Entregables Fase 1:** `php artisan migrate` y `db:seed` reproducibles; estructura de DB completa.
+
+---
+
+## Fase 2 — Autenticación y Roles
+
+### Backend
+- Auth con Laravel Sanctum (tokens SPA)
+- Endpoints:
+  - `POST /api/v1/auth/register`
+  - `POST /api/v1/auth/login`
+  - `POST /api/v1/auth/logout`
+  - `GET  /api/v1/auth/me`
+- Roles: `admin` (panel de gestión), `customer` (comprador)
+- Middleware de protección por rol en rutas admin
+- Rate limiting en endpoints de auth
+
+### Frontend
+- Contexto/store de autenticación (Zustand)
+- Páginas: Login, Registro
+- Rutas protegidas para área de cuenta y panel admin
+- Persistencia del token en localStorage/cookie segura
+- Interceptor Axios para renovar token y manejar 401
+
+**Entregables Fase 2:** Registro, login y logout funcionando; protección de rutas por rol.
+
+---
+
+## Fase 3 — Catálogo de Productos (público)
+
+### Backend
+- `GET /api/v1/products` — listado con filtros (categoría, precio, talle, color, búsqueda, paginación)
+- `GET /api/v1/products/{slug}` — detalle de producto con variantes e imágenes
+- `GET /api/v1/categories` — árbol de categorías
+- `GET /api/v1/categories/{slug}/products` — productos por categoría
+- `GET /api/v1/collections` — listado de colecciones editoriales
+- `GET /api/v1/collections/{slug}` — detalle de colección con productos
+
+### Frontend
+- **Home (`/`):** Announcement bar + Header + Hero editorial + Colecciones destacadas + Categorías + Productos destacados + Footer
+  - Estética: fotografía de pantalla completa, espacio negativo generoso, acentos dorados. Referencia visual: `code.html` y `DESIGN.md`
+- **Catálogo (`/shop`):** Grid de productos con filtros laterales (categoría, precio, talle, color), ordenamiento, paginación
+- **Categoría (`/categoria/:slug`):** Igual que catálogo filtrado por categoría
+- **Detalle de producto (`/producto/:slug`):** Galería de alta resolución, descripción, selector de talle/color, stock, botón agregar al carrito, productos relacionados
+- **Lookbook (`/lookbook`):** Grid editorial de colecciones con imagen cover y link a cada colección
+- **Colección (`/lookbook/:slug`):** Página editorial de la colección con productos asociados
+- **Búsqueda (`/buscar?q=...`):** Resultados de búsqueda
+- Componentes: ProductCard, CategoryCard, FilterPanel, ProductGallery, VariantSelector, CollectionCard
+
+**Entregables Fase 3:** Catálogo navegable completo con filtros, detalle de producto y lookbook.
+
+---
+
+## Fase 4 — Carrito de Compras
+
+### Backend
+- `GET  /api/v1/cart` — obtener carrito (sesión o usuario)
+- `POST /api/v1/cart/items` — agregar ítem
+- `PUT  /api/v1/cart/items/{id}` — actualizar cantidad
+- `DELETE /api/v1/cart/items/{id}` — eliminar ítem
+- `POST /api/v1/cart/coupon` — aplicar cupón
+- Carrito anónimo (cookie/sesión) con merge al iniciar sesión
+
+### Frontend
+- Drawer/panel lateral del carrito (sin navegar a otra página), estética oscura con borde dorado
+- Badge con cantidad en el ícono del header
+- Página `/carrito` con resumen completo, edición de cantidades, cupones
+- Persistencia local del carrito (Zustand + localStorage) sincronizada con backend
+
+**Entregables Fase 4:** Carrito funcional, persistente y sincronizado entre sesiones.
+
+---
+
+## Fase 5 — Checkout y Órdenes
+
+### Backend
+- `POST /api/v1/orders` — crear orden desde el carrito
+- `GET  /api/v1/orders` — historial de pedidos del usuario
+- `GET  /api/v1/orders/{id}` — detalle de pedido
+- Cálculo de envío según método seleccionado
+- Validación de stock al momento de crear la orden
+- Estados de orden: `pending`, `paid`, `processing`, `shipped`, `delivered`, `cancelled`
+- Integración de pasarela de pago (MercadoPago — pendiente de confirmar)
+
+### Frontend
+- Flujo de checkout multi-paso:
+  1. Dirección de envío
+  2. Método de envío
+  3. Pago (integración MercadoPago)
+  4. Confirmación
+- Página de confirmación de orden con resumen y número de pedido
+- Sección "Mis Pedidos" en la cuenta del usuario con estados y detalle
+
+**Entregables Fase 5:** Flujo de compra completo de extremo a extremo; pedidos registrados en DB.
+
+---
+
+## Fase 6 — Panel de Administración
+
+### Backend (rutas admin protegidas por rol)
+- Productos: CRUD completo con gestión de variantes e imágenes (`/api/v1/admin/products`)
+- Categorías: CRUD (`/api/v1/admin/categories`)
+- Colecciones: CRUD con asignación de productos (`/api/v1/admin/collections`)
+- Órdenes: listado con filtros, cambio de estado, detalle (`/api/v1/admin/orders`)
+- Usuarios: listado, detalle, bloqueo (`/api/v1/admin/users`)
+- Cupones: CRUD (`/api/v1/admin/coupons`)
+- Dashboard: stats básicas (ventas del día/mes, órdenes pendientes, productos sin stock)
+
+### Frontend (layout separado `/admin`)
+- Login admin (misma auth, verifica rol)
+- Dashboard con KPIs
+- CRUD de productos con upload de imágenes múltiples y gestión de variantes
+- CRUD de categorías (con jerarquía padre/hijo)
+- CRUD de colecciones editoriales con asignación de productos
+- Gestión de órdenes con cambio de estado
+- Listado de usuarios
+
+**Entregables Fase 6:** Panel admin operativo para gestión completa del catálogo, colecciones y pedidos.
+
+---
+
+## Fase 7 — Features Adicionales
+
+- **Guía de talles interactiva ("Interactive Measure"):** Flujo personal de medidas paso a paso con líneas finas y acentos dorados. Modal o página dedicada con tabla de medidas por tipo de prenda (saco, camisa, pantalón).
+- **Wishlist / Favoritos:** Guardar productos (requiere login); ícono de corazón en cada card
+- **Búsqueda avanzada:** Autocompletado, sugerencias de productos al escribir
+- **SEO:** Meta tags dinámicos, sitemap, Open Graph para compartir productos y colecciones
+- **Newsletter:** Suscripción al newsletter con campo de email en el footer (integración a definir: Mailchimp/similar)
+- **Reseñas:** Los compradores pueden dejar reseñas de productos adquiridos (puntaje numérico y comentario)
+
+---
+
+## Fase 8 — Calidad, Seguridad y Performance
+
+- Validación de inputs en backend (Laravel Form Requests) y frontend
+- Sanitización de uploads de imágenes
+- Rate limiting en endpoints sensibles
+- HTTPS obligatorio en producción
+- Headers de seguridad (CSP, HSTS)
+- Lazy loading de imágenes en el catálogo
+- Optimización de imágenes (WebP, thumbnails)
+- Pruebas: PHPUnit para servicios críticos del backend; tests de componentes React con Vitest
+
+---
+
+## Fase 9 — Despliegue
+
+- **Backend:** Servidor con PHP 8.2+, configuración de `storage/` y `bootstrap/cache/`, migraciones automáticas en deploy
+- **Frontend:** Build estático (`npm run build`) servido desde CDN o servidor web
+- **DB:** MySQL en producción con backups periódicos
+- Variables de entorno segregadas por entorno (local/staging/prod)
+- Dominio, SSL, configuración de correo transaccional (confirmaciones de pedido)
+
+---
+
+## Hitos Resumidos
+
+| Hito | Descripción | Estado |
+|------|-------------|--------|
+| H0 | Setup completo, healthcheck OK, Tailwind con Obsidian & Gold configurado | Pendiente |
+| H1 | Catálogo público navegable (home, listado, detalle, lookbook) | Pendiente |
+| H2 | Auth (registro/login) + carrito funcional | Pendiente |
+| H3 | Checkout y órdenes end-to-end | Pendiente |
+| H4 | Panel admin operativo | Pendiente |
+| H5 | Features adicionales (wishlist, guía de talles, reseñas) | Pendiente |
+| H6 | Pruebas, seguridad y despliegue | Pendiente |
+
+---
+
+## Decisiones Pendientes de Definir
+
+- Slogan de la marca: a definir
+- Umbral de envío gratis: a definir (monto en ARS)
+- Política de cambios y devoluciones: días y condiciones a definir
+- Pasarela de pago: MercadoPago (más probable para Argentina) — confirmar
+- Proveedor de envíos: integración con Correo Argentino / OCA / Andreani — confirmar
+- Hosting: a definir (VPS, Railway, Render, etc.)
+- Email transaccional: Mailtrap (dev) + Sendgrid/SES (prod) — confirmar
+- Gestión de imágenes en producción: local storage vs S3/Cloudflare R2 — confirmar

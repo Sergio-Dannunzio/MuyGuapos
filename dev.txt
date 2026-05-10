@@ -1,0 +1,85 @@
+# MuyGuapos — Guía de Contexto de Sesión
+
+## Descripción del Proyecto
+
+**MuyGuapos** es un e-commerce argentino de ropa elegante masculina.
+Slogan: a definir.
+Mercado objetivo: hombres que valoran el estilo clásico, la sastrería y la distinción. Cliente que busca calidad, exclusividad y una experiencia de compra premium.
+
+## Stack Tecnológico
+
+- **Frontend:** React + Tailwind CSS
+- **Backend:** PHP + Laravel (API REST)
+- **Base de datos:** MySQL
+- **Diseño:** Sistema de diseño propio en `/MuyGuapos/DESIGN.md`, prototipo HTML en `/MuyGuapos/code.html`
+
+## Estructura del Proyecto (planificada)
+
+```
+/MuyGuapos
+  /frontend          ← Aplicación React
+  /backend           ← API Laravel
+  DESIGN.md          ← Sistema de diseño (colores, tipografía, componentes)
+  code.html          ← Prototipo HTML de referencia visual
+  dev.txt            ← Este archivo (contexto de sesión)
+  /generales
+    plan-web.txt     ← Plan de implementación detallado
+```
+
+## Instrucciones para el Inicio de Sesión
+
+Seguí este orden al inicio de **cada sesión**:
+
+1. Leer este archivo (`dev.txt`) para recordar el contexto general del proyecto.
+2. Leer `/generales/plan-web.txt` para ver el plan de implementación y la fase actual.
+3. Revisar el historial de sesiones al final de este archivo para saber en qué punto se está trabajando.
+4. Hacer un escaneo rápido de los directorios `/frontend` y `/backend` (si ya existen) para verificar que el estado del código coincide con lo documentado en el historial.
+5. Responder con: *"Listo para continuar. Indicame qué trabajamos hoy."*
+
+## Sistema de Diseño (resumen)
+
+- **Nombre:** Obsidian & Gold
+- **Colores principales:** Obsidian (#131313) como `primary` (fondos), Oro Rico (#e9c349) como `secondary` (CTAs y acentos), Crema (#e5e2e1) como `tertiary` (tipografía principal)
+- **Tipografías:** Playfair Display (titulares editoriales), Hanken Grotesk (cuerpo, etiquetas, botones)
+- **Estética:** High-Contrast Minimalism + Editorial Noir. Atelier privado en penumbra. Espacio negativo generoso, fotografía dramática, acentos dorados que guían la mirada.
+- **Grid:** 12 columnas, máx 1440px, margen desktop 80px, margen mobile 24px
+- **Shapes:** Sharp (0px border-radius) — corte de sastrería como lenguaje visual
+- **Componentes clave:** Botones primarios sólido oro con texto negro; botones secundarios ghost (borde crema); cards con ghost border gris oscuro que revela detalle en hover; inputs con underline o borde fino que vira a dorado en focus
+
+## Características del E-commerce
+
+- Catálogo de productos organizado por categoría (Trajes, Camisas, Pantalones, Accesorios, Calzado, etc.)
+- Variantes por talle y color
+- Carrito de compras
+- Checkout con pagos (MercadoPago — a confirmar)
+- Registro y login de usuarios
+- Panel de administración (gestión de productos, pedidos, stock)
+- Guía de talles interactiva (flujo personal de medidas con acentos dorados — "Interactive Measure")
+- Wishlist / favoritos (requiere login)
+- Lookbook / colecciones editoriales
+- Envíos a todo el país (Argentina); umbral de envío gratis a definir
+- Política de cambios y devoluciones a definir
+- SEO y Open Graph para compartir productos
+
+## Consideraciones Técnicas
+
+- La API Laravel expone endpoints REST consumidos por el frontend React.
+- El frontend usa Tailwind CSS con el config customizado del sistema de diseño (ver `DESIGN.md` y `code.html` para referencia de clases y tokens).
+- Zona horaria: America/Argentina/Buenos_Aires.
+- Moneda: Pesos Argentinos (ARS).
+- Idioma: Español (Argentina).
+- Al implementar, ser crítico con el plan: si algo necesita ajuste o definición, preguntar antes de implementar.
+
+## Normas de Trabajo
+
+- Cada vez que se realice un cambio o funcionalidad, agregar una entrada al historial de este archivo con formato:
+  `AAAA/MM/DD HH:MM:SS - Descripción del cambio`
+- Siempre usar la fecha y hora actual del sistema para los registros.
+- Revisar DESIGN.md antes de implementar cualquier componente visual nuevo.
+- No implementar features fuera del alcance planificado sin confirmación.
+
+---
+
+## Historial de Sesiones y Cambios
+
+2026/05/09 - Inicio del proyecto MuyGuapos. Se adaptó dev.txt desde el proyecto anterior (DobleT — indumentaria técnica) al nuevo proyecto: e-commerce de ropa elegante masculina. Stack mantenido: React + Tailwind + Laravel + MySQL. Sistema de diseño: Obsidian & Gold (ya definido en DESIGN.md).
